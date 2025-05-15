@@ -1,0 +1,55 @@
+body{
+    text-align: center;
+}
+
+h1{
+    font-size: 3em;
+    color: #d3e019;
+}
+
+#containerMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#infoG{
+    width: 50%;
+    font-size: 1.5em;
+    color: #d3e019;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button{
+    background-color: #d3e019;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+
+}
+
+button:hover{
+    transform: scale(1.1);
+
+}
+button:active{
+    transform: scale(0.9);
+}
+
+.Shop{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}

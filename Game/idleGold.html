@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IdleGold - An idle game where you can earn gold while you relax.">
+    <meta name="keywords" content="Idle, Game, Gold, Clicker">
+    <link rel="stylesheet" href="graph.css">
     <title>IdleGold</title>
 </head>
 <body>
-    <div>
+    <div id="containerMain">
         <h1>IdleGold</h1>
         <!-- <p>Welcome to IdleGold, the idle game where you can earn gold while you relax!</p> -->
-        <p>Click the button below to start earning gold.</p>
+        <p id="intro-text">Click the button below to start earning gold.</p>
+        <div id="infoG">
         <span id="goldDisplay">Gold: 0</span><br>
-        <span id="GoldPerSec">Gold/sec: 0</span><br><br>
-        <div>
-        <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button>
+        <span id="GoldPerSec">Gold/sec: 0</span></div>
+        <br><br>
+        
+        <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button><br><br>
+        <div class="Shop">
         <button onclick="buyUpgradeClick()">Upgrade ClickPower</button>
-        <span id="upgradeCostClick">Upgrade ClickPower Cost: 10</span>
+        <span id="upgradeCostClick"><p id="firstBuyCl">Upgrade ClickPower</p> Cost: 10</span> <br>
         <button onclick="buyUpgradeSec()">Upgrade Goldidler</button>
-         <span id="upgradeCostSec">Upgrade gold par seconde Cost: 100</span>
+         <span id="upgradeCostSec"><p id="firstBuySec">Upgrade gold par seconde</p> Cost: 100</span>
         </div>
+        
     </div>
     
     <script src="mech.js"></script>
