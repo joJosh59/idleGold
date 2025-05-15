@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdleGold</title>
+</head>
+<body>
+    <div>
+        <h1>IdleGold</h1>
+        <!-- <p>Welcome to IdleGold, the idle game where you can earn gold while you relax!</p> -->
+        <p>Click the button below to start earning gold.</p>
+        <span id="goldDisplay">Gold: 0</span><br>
+        <span id="GoldPerSec">Gold/sec: 0</span><br><br>
+        <div>
+        <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button>
+        <button onclick="buyUpgradeClick()">Upgrade ClickPower</button>
+        <span id="upgradeCostClick">Upgrade ClickPower Cost: 10</span>
+        <button onclick="buyUpgradeSec()">Upgrade Goldidler</button>
+         <span id="upgradeCostSec">Upgrade gold par seconde Cost: 100</span>
+        </div>
+    </div>
+    
+    <script src="mech.js"></script>
+</body>
+</html>
