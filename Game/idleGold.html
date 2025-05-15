@@ -20,12 +20,20 @@
         
         <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button><br><br>
         <div class="Shop">
-        <button onclick="buyUpgradeClick()">Upgrade ClickPower</button>
-        <span id="upgradeCostClick"><p id="firstBuyCl">Upgrade ClickPower</p> Cost: 10</span> <br>
-        <button onclick="buyUpgradeSec()">Upgrade Goldidler</button>
-         <span id="upgradeCostSec"><p id="firstBuySec">Upgrade gold par seconde</p> Cost: 100</span>
-        </div>
+            <div id="btClick">
+                <span class="clickPower">
+                    <h3>Upgrade ClickPower</h3>
+                    <p>Increase the amount of gold you earn per click.</p>
+                    <span class="PClick">Click Power: 1</span>
+                </span>
+                <button id="upgradeCostClick" onclick="buyUpgradeClick()">Level: 0 <br> Cost: 10</button>
+            </div>
+        <br>
+            <div id="btSec">
+        <button id="upgradeCostSec" onclick="buyUpgradeSec()">Cost: 100</button>
+            </div>
         
+        </div>
     </div>
     
     <script src="mech.js"></script>

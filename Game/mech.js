@@ -5,30 +5,32 @@ let upgradeCostClick = parseInt(localStorage.getItem("UpCostClick")) || 10;
 let upgradeCostSec = parseInt(localStorage.getItem("UpCostSec")) || 100;
 let firstClick = JSON.parse(localStorage.getItem("FClick"));
 if(firstClick === null) firstClick = true;
-let firstBuySec =JSON.parse(localStorage.getItem("FBuySec")) || true;
-let firstBuyClick = JSON.parse(localStorage.getItem("FBuyClick")) || true;
+let clickLevel = parseInt(localStorage.getItem("ClickLevel")) || 0;
+const clickLevelMilestones = [9, 24, 49, 99, 199, 499, 999];
+const clickLevel2x = [10, 25, 50, 100, 200, 500, 1000];
 
 
 function initDisplay() {
   document.getElementById("goldDisplay").innerHTML = "Gold: " + Gold;
   document.getElementById("GoldPerSec").innerHTML = "Gold/sec: " + GoldPerSecond;
-  document.getElementById("upgradeCostClick").innerHTML = "Cost: " + upgradeCostClick;
-  document.getElementById("PClick").innerHTML = "+" + GoldPerClick + " Gold";
+updateUpgradeClickButton();
   document.getElementById("upgradeCostSec").innerHTML = "Cost: " + upgradeCostSec;
+  document.getElementById("ClickLvl").innerHTML = "Level: " + clickLevel;
+  updateClickPowerDisplay();
 
   // Supprime les <p> d'intro si déjà achetés
-  if (!firstBuyClick) {
-    const introBuy = document.getElementById("firstBuyCl");
-    if (introBuy) introBuy.remove();
-  }
-  if (!firstBuySec) {
-    const introBuyS = document.getElementById("firstBuySec");
-    if (introBuyS) introBuyS.remove();
-  }
+    if (firstClick) {
+        const intro = document.createElement("p");
+        intro.id = "intro-text";
+        intro.innerHTML = "Click to earn gold!";
+        document.body.appendChild(intro);
+    } else {
+        const intro = document.getElementById("intro-text");
   if (!firstClick) {
     const intro = document.getElementById("intro-text");
     if (intro) intro.remove();
   }
+}
 }
 
 document.addEventListener("DOMContentLoaded", initDisplay);
@@ -54,38 +56,56 @@ function generateGold() {
 
 setInterval(generateGold, 1000); // Generate Gold every second
 
+function updateUpgradeClickButton() {
+  document.getElementById("upgradeCostClick").innerHTML = "Level: " + clickLevel + "<br>Cost: " + upgradeCostClick;
+}
+
+function checkClickLevelMilestone() {
+    if (clickLevel2x.includes(clickLevel)) {
+        GoldPerClick *=2;
+        alert("Congratulations! Your click power has doubled to " + GoldPerClick + "!");
+        updateClickPowerDisplay();
+        localStorage.setItem("GoldClick", GoldPerClick);
+    }
+}
 
 function buyUpgradeClick() {
-     if (firstBuyClick) {
-    const introBuy = document.getElementById("firstBuyCl");
-    if (introBuy) introBuy.remove();
-    firstBuyClick = false;
-    localStorage.setItem("FBuyClick", JSON.stringify(firstBuyClick));
-  }
+    
   if (Gold >= upgradeCostClick) {
     Gold -= upgradeCostClick;
     GoldPerClick += 1;
-    upgradeCostClick = Math.floor(upgradeCostClick * 1.25);
+    clickLevel += 1;
+    if(clickLevelMilestones.includes(clickLevel)) {
+        upgradeCostClick = Math.floor(upgradeCostClick * 2.5);
+    }else {
+        upgradeCostClick = Math.floor(upgradeCostClick * 1.25);
+    }
 
     document.getElementById("goldDisplay").innerHTML = "Gold: " + Gold;
-    document.getElementById("GoldPerSec").innerHTML = "Gold/sec: " + GoldPerSecond;
-    document.getElementById("upgradeCostClick").innerHTML = "Cost: " + upgradeCostClick;
-    document.getElementById("PClick").innerHTML = "+" + GoldPerClick + " Gold";
+    updateUpgradeClickButton();
+
 
     localStorage.setItem("UpCostClick", upgradeCostClick);
     localStorage.setItem("GoldClick", GoldPerClick);
+    localStorage.setItem("ClickLevel", clickLevel);
+
+    updateClickPowerDisplay();
+    checkClickLevelMilestone();
   } else {
     alert("Not enough gold!");
   }
 }
 
-function buyUpgradeSec() {
-     if (firstBuySec) {
-    const introBuyS = document.getElementById("firstBuySec");
-    if (introBuyS) introBuyS.remove();
-    firstBuySec = false;
-    localStorage.setItem("FBuySec", JSON.stringify(firstBuySec));  
+function updateClickPowerDisplay() {
+  const pClickElements = document.getElementsByClassName("PClick");
+  for (let el of pClickElements) {
+    el.innerHTML = "Click Power: " + GoldPerClick;
   }
+}
+
+
+function buyUpgradeSec() {
+   
   if (Gold >= upgradeCostSec) {
     Gold -= upgradeCostSec;
     GoldPerSecond += 1;

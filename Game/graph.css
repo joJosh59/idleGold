@@ -22,6 +22,7 @@ h1{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: aqua;
 }
 
 button{
@@ -52,4 +53,11 @@ button:active{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+}
+
+#btClick{
+    display: flex;
+    justify-content: space-around;
+    background-color: #1675e0;
+    width: 120%;
 }
