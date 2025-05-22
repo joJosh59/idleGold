@@ -66,6 +66,7 @@ button:active{
 
 #btSec{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     background-color: #1675e0;
     width: 50%;

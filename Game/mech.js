@@ -8,6 +8,7 @@ if(firstClick === null) firstClick = true;
 let clickLevel = parseInt(localStorage.getItem("ClickLevel")) || 0;
 let idleLevel = parseInt(localStorage.getItem("IdleLevel")) || 0;
 
+
 // Tableau des niveaux de clics et des multiplicateurs
 const clickLevelMilestones = [9, 24, 49, 99, 199, 499, 999];
 const clickLevel2x = [10, 25, 50, 100, 200, 500, 1000];
@@ -36,8 +37,10 @@ updateUpgradeClickButton();
 }
 }
 
+
 // Ajout d'un écouteur d'événements pour l'initialisation de l'affichage
 document.addEventListener("DOMContentLoaded", initDisplay);
+
 
 // Fonction pour gérer le clic sur le bouton
 function earnGold() {
@@ -52,6 +55,7 @@ function earnGold() {
   localStorage.setItem("Gold", Gold);
 }
 
+
 // Fonction pour générer de l'or chaque seconde
 function generateGold() {
   Gold += GoldPerSecond;
@@ -59,6 +63,7 @@ function generateGold() {
     document.getElementById("goldDisplay").innerHTML = "Gold: " + Gold;
     localStorage.setItem("Gold", Gold);
 }
+
 
 // Fonction pour générer de l'or chaque seconde
 setInterval(generateGold, 1000);
@@ -68,10 +73,12 @@ function updateUpgradeClickButton() {
   document.getElementById("upgradeCostClick").innerHTML = "Level: " + clickLevel + "<br>Cost: " + upgradeCostClick;
 }
 
+
 // Fonction pur mettre a jour le bouton d'achat de mise à niveau de génération d'or par seconde
 function updateUpgradeSecButton() {
   document.getElementById("upgradeCostSec").innerHTML = "Level:"+ idleLevel + "<br>Cost: " + upgradeCostSec;
 }
+
 
 // Fonction pour vérifier si le niveau de clic a atteint un jalon
 function checkClickLevelMilestone() {
@@ -83,6 +90,7 @@ function checkClickLevelMilestone() {
     }
 }
 
+
 // Fonction pour verifier si le niveau d'inactivité a atteint un jalon
 function checkIdleLevelMilestone() {
     if (clickLevel2x.includes(idleLevel)) {
@@ -92,6 +100,7 @@ function checkIdleLevelMilestone() {
         localStorage.setItem("GoldSec", GoldPerSecond);
     }
 }
+
 
 // Fonction pour acheter une mise à niveau de clic
 function buyUpgradeClick() {
@@ -109,7 +118,6 @@ function buyUpgradeClick() {
     document.getElementById("goldDisplay").innerHTML = "Gold: " + Gold;
     updateUpgradeClickButton();
 
-
     localStorage.setItem("UpCostClick", upgradeCostClick);
     localStorage.setItem("GoldClick", GoldPerClick);
     localStorage.setItem("ClickLevel", clickLevel);
@@ -121,6 +129,8 @@ function buyUpgradeClick() {
   }
 }
 
+
+// Fonction pour mettre à jour l'affichage de la puissance de clic
 function updateClickPowerDisplay() {
   const pClickElements = document.getElementsByClassName("PClick");
   for (let el of pClickElements) {
@@ -128,12 +138,15 @@ function updateClickPowerDisplay() {
   }
 }
 
+
+// Fonction pour mettre à jour l'affichage de la puissance d'inactivité
 function updateIdlePowerDisplay() {
   const pIdleElements = document.getElementsByClassName("PIdle");
   for (let el of pIdleElements) {
-    el.innerHTML = "Idle Power: " + GoldPerSecond;
+    el.innerHTML = "Idle Power: " + GoldPerSecond + " Gold/s";
   }
 }
+
 
 // Fonction pour acheter une mise à niveau de génération d'or par seconde
 function buyUpgradeSec() {
@@ -152,7 +165,6 @@ function buyUpgradeSec() {
     updateUpgradeSecButton();
     checkIdleLevelMilestone();
     
-
     document.getElementById("goldDisplay").innerHTML = "Gold: " + Gold;
     document.getElementById("GoldPerSec").innerHTML = "Gold/sec: " + GoldPerSecond;
 
@@ -163,4 +175,14 @@ function buyUpgradeSec() {
   } else {
     alert("Not enough gold!");
   }
+}
+
+
+function showShopClick(shopId){
+
+  document.getElementById("btClick").style.display = "none";
+  document.getElementById("btSec").style.display = "none";
+  document.getElementById("Genepow").style.display = "none";
+
+  document.getElementById(shopId).style.display = "block";
 }

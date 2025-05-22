@@ -20,18 +20,31 @@
         <p id="intro-text">Click sur le bouton pour commencer </p>
         <br>
         
-        <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button><br><br>
+        <button id="startButton" onclick="earnGold()">Earn Gold</button>
+        <br><br>
+
+        <h2>Boutique</h2>
+
         <div class="Shop">
-            <div id="btClick">
+            <div id="btnShop">
+                <button onclick="showShopClick('btClick')">Click Power</button>
+                <button onclick="showShopClick('btSec')">Idle Power</button>
+                <button onclick="showShopClick('Gene')">General</button>
+            </div>
+        </div>
+            <div id="btClick" style="display:none;">
                 <span class="clickPower">
                     <h3>Upgrade ClickPower</h3>
                     <p>Increase the amount of gold you earn per click.</p>
                     <span class="PClick">Click Power: 1</span>
                 </span>
                 <button id="upgradeCostClick" onclick="buyUpgradeClick()">Level: 0 <br> Cost: 10</button>
-            </div>
+           
+        </div>
         <br>
-            <div id="btSec">
+            
+            
+            <div id="btSec" style="display:none;">
                 <span class="idlePower">
                     <h3>Upgrade Gold/sec</h3>
                     <p>Increase the amount of gold you earn per second.</p>
@@ -39,9 +52,19 @@
                 </span>
         <button id="upgradeCostSec" onclick="buyUpgradeSec()">Level: 0 <br> Cost: 100</button>
             </div>
+
+        <br>
+
+        <div id="Genepow" style="display:none;">
+            <span class="general">
+                <h3>General</h3>
+                <p>Upgrade your general stats.</p>
+                
+            </span
+            <button id="upgradeCostGene" onclick="buyUpgradeGene()">Level: 0 <br> Cost: 1000</button>
         
-        </div>
-    </div>
+        
+    
     
     <script src="mech.js"></script>
 </body>
