@@ -53,11 +53,20 @@ button:active{
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    background-color: chartreuse;
+    width: 100%;
 }
 
 #btClick{
     display: flex;
     justify-content: space-around;
     background-color: #1675e0;
-    width: 120%;
+    width: 50%;
+}
+
+#btSec{
+    display: flex;
+    justify-content: space-around;
+    background-color: #1675e0;
+    width: 50%;
 }

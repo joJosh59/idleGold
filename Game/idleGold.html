@@ -12,11 +12,13 @@
     <div id="containerMain">
         <h1>IdleGold</h1>
         <!-- <p>Welcome to IdleGold, the idle game where you can earn gold while you relax!</p> -->
-        <p id="intro-text">Click the button below to start earning gold.</p>
         <div id="infoG">
-        <span id="goldDisplay">Gold: 0</span><br>
-        <span id="GoldPerSec">Gold/sec: 0</span></div>
-        <br><br>
+            <span id="goldDisplay">Gold: 0</span><br>
+            <span id="GoldPerSec">Gold/sec: 0</span>
+        </div>
+        <br>
+        <p id="intro-text">Click sur le bouton pour commencer </p>
+        <br>
         
         <button id="startButton" onclick="earnGold()">Earn Gold <span id="PClick"> +1 Gold</span></button><br><br>
         <div class="Shop">
@@ -30,7 +32,12 @@
             </div>
         <br>
             <div id="btSec">
-        <button id="upgradeCostSec" onclick="buyUpgradeSec()">Cost: 100</button>
+                <span class="idlePower">
+                    <h3>Upgrade Gold/sec</h3>
+                    <p>Increase the amount of gold you earn per second.</p>
+                    <span class="PIdle">Idle Power: 1</span>
+                </span>
+        <button id="upgradeCostSec" onclick="buyUpgradeSec()">Level: 0 <br> Cost: 100</button>
             </div>
         
         </div>
